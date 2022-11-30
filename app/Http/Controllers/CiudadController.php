@@ -71,14 +71,31 @@ class CiudadController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeComunidad(Request $request)
+    {
+        $comunidad = new Comunidad();
+        $comunidad->comunidad = $request->comunidad;
+        $comunidad->fk_ciudad = $request->fk_ciudad;
+
+        $comunidad->save();
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showComunidades($clave_ciudad)
     {
         //
+        $comunidadesCiudad = Comunidad::where('comunidades.fk_ciudad', '=', $clave_ciudad)->get();
+        return response()->json($comunidadesCiudad);
     }
 
     /**
@@ -107,6 +124,24 @@ class CiudadController extends Controller
 
         $ciudad->save();
         return $ciudad;
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateComunidad(Request $request)
+    {
+        //
+        $comunidad = Comunidad::find($request->clave_comunidad, 'clave_comunidad');
+        $comunidad->comunidad = $request->comunidad;
+        $comunidad->fk_ciudad = $request->fk_ciudad;
+
+        $comunidad->save();
+        return $comunidad;
     }
 
     /**

@@ -47,14 +47,17 @@ Route::put('/actualizar-cliente/{clave_persona}', 'App\Http\Controllers\ClienteC
 //CIUDADES 
 Route::get('/ciudades', 'App\Http\Controllers\CiudadController@index'); //MOSTRAR CIUDADES
     Route::get('/mostrar-comunidades', 'App\Http\Controllers\CiudadController@indexComunidades'); //MOSTRAR COMUNIDADES
+    Route::get('/comunidades-por-ciudad/{clave_ciudad}', 'App\Http\Controllers\CiudadController@showComunidades'); //MOSTRAR COMUNIDADES
 Route::post('/ciudades', 'App\Http\Controllers\CiudadController@store'); //GUARDAR CIUDADES
+    Route::post('/guardar-comunidades', 'App\Http\Controllers\CiudadController@storeComunidad'); //GUARDAR CIUDADES
 Route::put('/actualizar-ciudad/{clave_ciudad}', 'App\Http\Controllers\CiudadController@update'); //ACTUALIZAR CIUDADES
+    Route::put('/actualizar-comunidades/{clave_comunidad}', 'App\Http\Controllers\CiudadController@updateComunidad'); //ACTUALIZAR COMUNIDADES
 
 //COMUNIDADES
-Route::get('/comunidades', 'App\Http\Controllers\ComunidadController@index'); //MOSTRAR COMUNIDADES
-Route::get('/comunidades-ciudad/{clave_ciudad}', 'App\Http\Controllers\ComunidadController@show'); //MOSTRAR COMUNIDADES
-Route::post('/comunidades', 'App\Http\Controllers\ComunidadController@store'); //GUARDAR COMUNIDADES
-Route::put('/actualizar-comunidad/{clave_comunidad}', 'App\Http\Controllers\ComunidadController@update'); //ACTUALIZAR COMUNIDADES
+//Route::get('/comunidades', 'App\Http\Controllers\ComunidadController@index'); //MOSTRAR COMUNIDADES
+//Route::get('/comunidades-ciudad/{clave_ciudad}', 'App\Http\Controllers\ComunidadController@show'); //MOSTRAR COMUNIDADES
+//Route::post('/comunidades', 'App\Http\Controllers\ComunidadController@store'); //GUARDAR COMUNIDADES
+//Route::put('/actualizar-comunidad/{clave_comunidad}', 'App\Http\Controllers\ComunidadController@update'); //ACTUALIZAR COMUNIDADES
 
 //PAQUETES DE INTERNET 
 Route::get('/paquetes-internet', 'App\Http\Controllers\PaquetesinternetController@index'); //MOSTRAR REGISTROS
