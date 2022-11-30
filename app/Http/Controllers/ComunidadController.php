@@ -54,7 +54,6 @@ class ComunidadController extends Controller
         $comunidad->fk_ciudad = $request->fk_ciudad;
 
         $comunidad->save();
-        //return response()->json(['message' => 'Se ha registrado la comunidad correctamente.']);
     }
 
     /**
