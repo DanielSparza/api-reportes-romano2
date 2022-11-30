@@ -45,7 +45,7 @@ class ComunidadController extends Controller
                 'comunidades.comunidad',
                 'comunidades.fk_ciudad', 
                 'ciudades.ciudad')
-                ->get();
+                ->where('comunidades.clave_comunidad', '>', 0)->get();
 
         return response()->json($comunidades);
     }
