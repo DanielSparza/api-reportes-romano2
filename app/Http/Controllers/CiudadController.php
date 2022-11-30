@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ciudad;
+use App\Models\Comunidad;
 
 class CiudadController extends Controller
 {
@@ -27,6 +28,14 @@ class CiudadController extends Controller
         //
         $ciudades = Ciudad::all();
         return response()->json($ciudades);
+    }
+
+    public function indexComunidades(){
+        //
+        $comunidades = Comunidad::join('ciudades', 'comunidades.fk_ciudad', '=', 'ciudades.clave_ciudad')
+            ->select('comunidades.clave_comunidad', 'comunidades.comunidad', 'comunidades.fk_ciudad', 'ciudades.ciudad')->get();
+
+        return response()->json($comunidades);
     }
 
     /**
