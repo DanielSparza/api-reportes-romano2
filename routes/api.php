@@ -51,7 +51,6 @@ Route::put('/actualizar-ciudad/{clave_ciudad}', 'App\Http\Controllers\CiudadCont
 
 //COMUNIDADES
 Route::get('/comunidades', 'App\Http\Controllers\ComunidadController@index'); //MOSTRAR COMUNIDADES
-Route::get('/obtener-comunidades', 'App\Http\Controllers\ComunidadController@obtenerComunidades'); //MOSTRAR COMUNIDADES
 Route::get('/comunidades-ciudad/{clave_ciudad}', 'App\Http\Controllers\ComunidadController@show'); //MOSTRAR COMUNIDADES
 Route::post('/comunidades', 'App\Http\Controllers\ComunidadController@store'); //GUARDAR COMUNIDADES
 Route::put('/actualizar-comunidad/{clave_comunidad}', 'App\Http\Controllers\ComunidadController@update'); //ACTUALIZAR COMUNIDADES

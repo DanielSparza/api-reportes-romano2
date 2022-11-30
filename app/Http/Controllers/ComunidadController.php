@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\models\Comunidad;
-use Exception;
-use Illuminate\Database\QueryException;
 
 class ComunidadController extends Controller
 {
@@ -27,34 +25,10 @@ class ComunidadController extends Controller
     public function index()
     {
         //
-        try {
-            $comunidades = Comunidad::join('ciudades', 'comunidades.fk_ciudad', '=', 'ciudades.clave_ciudad')
-                ->select('comunidades.clave_comunidad', 'comunidades.comunidad', 'comunidades.fk_ciudad', 'ciudades.ciudad')->get();
+        $comunidades = Comunidad::join('ciudades', 'comunidades.fk_ciudad', '=', 'ciudades.clave_ciudad')
+            ->select('comunidades.clave_comunidad', 'comunidades.comunidad', 'comunidades.fk_ciudad', 'ciudades.ciudad')->get();
 
-            return response()->json($comunidades);
-        } catch (Exception $e) {
-            return response()->json($e);
-        } catch (QueryException $e) {
-            return response()->json($e);
-        }
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function obtenerComunidades()
-    {
-        //
-        try {
-            $comunidades = Comunidad::all();
-            return response()->json($comunidades);
-        } catch (Exception $e) {
-            return response()->json($e);
-        } catch (QueryException $e) {
-            return response()->json($e);
-        }
+        return response()->json($comunidades);
     }
 
     /**

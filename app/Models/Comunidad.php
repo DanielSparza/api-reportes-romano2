@@ -33,13 +33,5 @@ class Comunidad extends Model
         'fk_ciudad',
     ];
 
-    public function cliente()
-    {
-        return $this->hasMany(Cliente::class, 'clientes');
-    }
-
-    public function ciudad()
-    {
-        return $this->belongsTo(Ciudad::class, 'ciudades');
-    }
+    
 }
