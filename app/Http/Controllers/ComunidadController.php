@@ -48,15 +48,7 @@ class ComunidadController extends Controller
     {
         //
         try {
-            $comunidades = Comunidad::join('ciudades', 'comunidades.fk_ciudad', '=', 'ciudades.clave_ciudad')
-                ->select(
-                    'comunidades.clave_comunidad',
-                    'comunidades.comunidad',
-                    'comunidades.fk_ciudad',
-                    'ciudades.ciudad'
-                )
-                ->where('comunidades.clave_comunidad', '>', 0)->get();
-
+            $comunidades = Comunidad::all();
             return response()->json($comunidades);
         } catch (Exception $e) {
             return response()->json($e);
