@@ -32,6 +32,25 @@ class ComunidadController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function obtenerComunidades()
+    {
+        //
+        $comunidades = Comunidad::join('ciudades', 'comunidades.fk_ciudad', '=', 'ciudades.clave_ciudad')
+            ->select(
+                'comunidades.clave_comunidad',
+                'comunidades.comunidad',
+                'comunidades.fk_ciudad', 
+                'ciudades.ciudad')
+                ->get();
+
+        return response()->json($comunidades);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
