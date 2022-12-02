@@ -41,8 +41,7 @@ class UserController extends Controller
                 'usuarios.fk_rol',
                 'personas.estatus'
             )
-            ->get();
-            //->where('roles.rol', '!=', 'Cliente')
+            ->where('roles.rol', '!=', 'Cliente')->get();
 
         return response()->json($usuarios);
     }
